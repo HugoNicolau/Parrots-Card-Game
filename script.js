@@ -13,11 +13,13 @@ while (
     "Com quantas cartas quer jogar?(Apenas números pares de 4 a 14)"
   );
 }
-
+let contagem = 0;
+duracao();
 let cartasViradas = 0;
 let arrViradas = [];
 let jogadas = 0;
 let arrAcertos = [];
+
 
 let arrayCartas = [
   "./img/1",
@@ -88,7 +90,7 @@ function esconderFrente(element) {
         arrAcertos.push(arrViradas[c - 2]);
 
         if (arrAcertos.length === qtdcartas) {
-          setTimeout(alert, 100, `Você ganhou em ${jogadas} jogadas!`);
+          setTimeout(alert, 100, `Parabéns! Você ganhou em ${jogadas} jogadas e ${contagem} segundos!`);
 
           setTimeout(jogarNovamente, 111);
         }
@@ -120,4 +122,18 @@ function jogarNovamente() {
         b = prompt("Você deseja jogar novamente?(sim ou nao");
     }
   }
+}
+function duracao(){
+    setInterval(soma,1000)
+}
+function soma(){
+    
+    let tempo = document.querySelector('.timer')
+    contagem++
+    console.log(contagem)
+    
+    console.log(tempo)
+
+    tempo.innerHTML = contagem
+    
 }

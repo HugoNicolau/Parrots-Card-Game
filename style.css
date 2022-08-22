@@ -24,6 +24,23 @@ body {
   display: flex;
   flex-wrap: wrap;
 }
+.timer{
+    position:fixed;
+    top:0;
+    right:0;
+    border: 5px solid #75b79e;
+    border-radius:0px 0 0px 10px;
+    height:70px;
+    min-width: 60px;
+    width:auto;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    font-size:40px;
+    color: #77B255;
+}
 .container {
   width: 100%;
   display: flex;
@@ -105,5 +122,11 @@ body {
     letter-spacing: -0.004em;
     text-align: center;
   }
-  
+  .timer{
+    top:0px;
+    right:0px;
+    height:auto;
+    font-size:30px;
+    
+  }
 }
