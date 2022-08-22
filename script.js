@@ -10,7 +10,7 @@ while (
   qtdcartas != 14
 ) {
   qtdcartas = prompt(
-    "Com quantas cartas quer jogar?(Apenas números pares de 4 a 14"
+    "Com quantas cartas quer jogar?(Apenas números pares de 4 a 14)"
   );
 }
 
@@ -108,11 +108,16 @@ function virarDeVolta(arrayV) {
 }
 
 function jogarNovamente() {
-  let b = prompt("Você deseja jogar novamente");
+  let b = prompt("Você deseja jogar novamente?(sim ou nao)");
   b = b.toLocaleLowerCase();
-  if (b != "sim") {
+  if (b == "nao" || b == "não") {
     alert("Obrigado por jogar!");
   } else if (b == "sim") {
     window.location.reload();
+  }
+  else{
+    while(b != 'sim' && b != 'nao' && b != 'não'){
+        b = prompt("Você deseja jogar novamente?(sim ou nao");
+    }
   }
 }
