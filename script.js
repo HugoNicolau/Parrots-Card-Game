@@ -46,7 +46,7 @@ function porCartas() {
     //coloca cartas no jogo
     card.innerHTML += `
       <button class="card">
-        <div class="carta" onclick="hideFront(this)" >
+        <div class="carta" onclick="esconderFrente(this)" >
             <div  class="frente-carta">
             <img src="./img/front.png">
             </div>
@@ -58,6 +58,10 @@ function porCartas() {
            </button> `;
     //colocar todas as cartas diferentes
   }
+}
+function esconderFrente(element){
+    element.classList.add('virada')
+
 }
 
 
