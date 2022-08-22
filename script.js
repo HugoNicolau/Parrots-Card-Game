@@ -17,7 +17,7 @@ while (
 let cartasViradas = 0;
 let arrViradas = [];
 let jogadas = 0;
-let arrAcertos=[];
+let arrAcertos = [];
 
 let arrayCartas = [
   "./img/1",
@@ -50,7 +50,7 @@ function porCartas() {
     //coloca cartas no jogo
     card.innerHTML += `
       <button class="card" >
-        <div class="carta" onclick="esconderFrente(this)" disabled>
+        <div class="carta" onclick="esconderFrente(this)" >
             <div  class="frente-carta">
             <img src="./img/front.png">
             </div>
@@ -65,29 +65,32 @@ function porCartas() {
 }
 function esconderFrente(element) {
   if (cartasViradas < 2) {
-    arrViradas.push(element);
-    element.classList.add("virada");
-    cartasViradas++;
-    jogadas++;
+    if (element.classList.contains("virada") == false) {
+      cartasViradas++;
+      jogadas++;
+      console.log(cartasViradas);
+      arrViradas.push(element);
+      element.classList.add("virada");
+    }
+
     //se forem 2 viradas, comparar pra ver se são pares e, se forem, adicionar ao array e não desvirar, se não forem, contar um tempo e desvirar
     if (cartasViradas == 2) {
+      let c = arrViradas.length;
       if (
-        arrViradas[arrViradas.length - 1].children[1].innerHTML !=
-        arrViradas[arrViradas.length - 2].children[1].innerHTML
+        arrViradas[c - 1].children[1].innerHTML !=
+        arrViradas[c - 2].children[1].innerHTML
       ) {
         setTimeout(virarDeVolta, 1000, arrViradas);
-        cartasViradas -= 2;
+        
       } else {
         cartasViradas -= 2;
-        arrAcertos.push(arrViradas[arrViradas.length-1])
-        arrAcertos.push(arrViradas[arrViradas.length-2])
+        arrAcertos.push(arrViradas[c - 1]);
+        arrAcertos.push(arrViradas[c - 2]);
 
         if (arrAcertos.length === qtdcartas) {
-            setTimeout(alert,100,`Você ganhou em ${jogadas} jogadas!`)
-           
-            setTimeout(jogarNovamente, 111)
-           
-          //alert(`Você ganhou em ${jogadas} jogadas!`);
+          setTimeout(alert, 100, `Você ganhou em ${jogadas} jogadas!`);
+
+          setTimeout(jogarNovamente, 111);
         }
       }
     }
@@ -101,17 +104,15 @@ function virarDeVolta(arrayV) {
   let a = arrayV.length;
   arrayV[a - 1].classList.remove("virada");
   arrayV[a - 2].classList.remove("virada");
-
+  cartasViradas -= 2;
 }
 
-function jogarNovamente(){
-    let b = prompt('Você deseja jogar novamente')
-    b = b.toLocaleLowerCase()
-           if(b != "sim"){
-            alert("Obrigado por jogar")
-           }
-           else if(b == "sim"){
-            window.location.reload();
-
-           }
+function jogarNovamente() {
+  let b = prompt("Você deseja jogar novamente");
+  b = b.toLocaleLowerCase();
+  if (b != "sim") {
+    alert("Obrigado por jogar!");
+  } else if (b == "sim") {
+    window.location.reload();
+  }
 }
