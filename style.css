@@ -1,5 +1,101 @@
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
+}
+body {
+  background-color: #eef9bf;
+}
+
+.titulo-site {
+  height: 150px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.parrotcardgame {
+  font-family: "Roboto", sans-serif;
+  color: #75b79e;
+  font-size: 56px;
+  font-weight: 700;
+  line-height: 66px;
+  letter-spacing: -0.004em;
+  text-align: left;
+  display:flex;
+  flex-wrap:wrap;
+}
+.container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+}
+
+.conteudo {
+  width: 872px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.carta {
+  background-color: #a7e9af;
+  height: 146px;
+  width: 117px;
+  left: 122px;
+  top: 150px;
+  border-radius: 5px;
+  border: 1px solid #99cea8;
+  margin-right: 34px;
+  margin-bottom: 34px;
+  display:flex;
+  align-items: center;
+    justify-content: center;
+
+}
+.carta:hover{
+     transition: all 1s linear;
+    transform: rotateY(180deg);
+    background-color: blue;
+
+}
+
+.frente-carta,.costas-carta{
+    width:100px;
+    height:100px;
+    display:flex;
+    position:absolute;
+    backface-visibility: hidden;
+    
+}
+
+.escondido{
+    display:none;
+}
+.virar{
+    transition: all 1s linear;
+    transform: rotateY(180deg);
+    background-color: blue;
+    
+}
+
+@media (max-width: 614px) {
+  .conteudo {
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
   }
 
-  
+  .parrotcardgame {
+    font-family: "Roboto", sans-serif;
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 42px;
+    letter-spacing: -0.004em;
+    text-align: center;
+  }
+  .carta{
+    margin-right:0;
+  }
+}
