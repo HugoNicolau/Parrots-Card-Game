@@ -130,9 +130,7 @@ function soma(){
     
     let tempo = document.querySelector('.timer')
     contagem++
-    console.log(contagem)
     
-    console.log(tempo)
 
     tempo.innerHTML = contagem
     
