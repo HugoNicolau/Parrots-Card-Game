@@ -16,6 +16,8 @@ while (
 
 let cartasViradas = 0;
 let arrViradas = [];
+let jogadas = 0;
+let arrAcertos=[];
 
 let arrayCartas = [
   "./img/1",
@@ -47,8 +49,8 @@ function porCartas() {
   for (let i = 0; i < qtdcartas; i++) {
     //coloca cartas no jogo
     card.innerHTML += `
-      <button class="card">
-        <div class="carta" onclick="esconderFrente(this)" >
+      <button class="card" >
+        <div class="carta" onclick="esconderFrente(this)" disabled>
             <div  class="frente-carta">
             <img src="./img/front.png">
             </div>
@@ -66,17 +68,27 @@ function esconderFrente(element) {
     arrViradas.push(element);
     element.classList.add("virada");
     cartasViradas++;
+    jogadas++;
     //se forem 2 viradas, comparar pra ver se são pares e, se forem, adicionar ao array e não desvirar, se não forem, contar um tempo e desvirar
     if (cartasViradas == 2) {
-        console.log(arrViradas[arrViradas.length-1].children[1].innerHTML)
-      if (arrViradas[arrViradas.length-1].children[1].innerHTML !=arrViradas[arrViradas.length-2].children[1].innerHTML) {
-        console.log(arrViradas[arrViradas.length-1].children[1])
+      if (
+        arrViradas[arrViradas.length - 1].children[1].innerHTML !=
+        arrViradas[arrViradas.length - 2].children[1].innerHTML
+      ) {
         setTimeout(virarDeVolta, 1000, arrViradas);
-        cartasViradas-=2
-      }
-      else {
-        cartasViradas-=2
-        
+        cartasViradas -= 2;
+      } else {
+        cartasViradas -= 2;
+        arrAcertos.push(arrViradas[arrViradas.length-1])
+        arrAcertos.push(arrViradas[arrViradas.length-2])
+
+        if (arrAcertos.length === qtdcartas) {
+            setTimeout(alert,100,`Você ganhou em ${jogadas} jogadas!`)
+           
+            setTimeout(jogarNovamente, 111)
+           
+          //alert(`Você ganhou em ${jogadas} jogadas!`);
+        }
       }
     }
   } else {
@@ -89,5 +101,17 @@ function virarDeVolta(arrayV) {
   let a = arrayV.length;
   arrayV[a - 1].classList.remove("virada");
   arrayV[a - 2].classList.remove("virada");
-  //element.classList.remove('virada')
+
+}
+
+function jogarNovamente(){
+    let b = prompt('Você deseja jogar novamente')
+    b = b.toLocaleLowerCase()
+           if(b != "sim"){
+            alert("Obrigado por jogar")
+           }
+           else if(b == "sim"){
+            window.location.reload();
+
+           }
 }
